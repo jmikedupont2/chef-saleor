@@ -5,11 +5,10 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-user_name = 'webshop'
-user_password = 'hyp(OgTar1'
-database_name = user_name
+user_name = node.default['database']['user_name']
+user_password = node.default['database']['user_password']
+database_name = node.default['database']['database_name']
 
-# 
 
 #node.default['postgresql']['enable_pgdg_apt'] = true
 #node.default['postgresql']['config']['listen_addresses'] = 'localhost'

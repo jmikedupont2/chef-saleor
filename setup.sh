@@ -6,10 +6,11 @@ fi
 sudo dpkg -i chefdk_3.6.57-1_amd64.deb
 
 #chef generate cookbook nt41_webshop
+cd nt41_webshop
 
 #bundle install
 
 #.kitchen.local.yml
 
-#kitchen test
+kitchen test
 

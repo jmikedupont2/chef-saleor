@@ -3,4 +3,10 @@ source 'https://supermarket.chef.io'
 
 metadata
 
-cookbook 'postgresql', '~> 7.1.1'
+#cookbook 'postgresql', :path => './berks-cookbooks/postgresql'
+#cookbook 'postgresql', '~> 7.1.1'
+cookbook 'postgresql', github: 'sous-chefs/postgresql', tag: 'master'
+
+#cookbook 'application_python', github: 'poise/application_python', tag: 'master'
+
+extension 'halite'

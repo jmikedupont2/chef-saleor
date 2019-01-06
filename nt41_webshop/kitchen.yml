@@ -1,0 +1,16 @@
+---
+driver:
+  name: localhost
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: debian-9
+#  - name: centos-7
+
+suites:
+  - name: default
+    run_list:
+      - recipe[nt41_webshop::default]
+    attributes:

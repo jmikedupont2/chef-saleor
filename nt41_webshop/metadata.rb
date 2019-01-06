@@ -19,3 +19,8 @@ chef_version '>= 13.0'
 #
 # source_url 'https://github.com/<insert_org_here>/nt41_webshop'
 depends 'postgresql'
+depends 'poise-build-essential'
+depends 'poise-python'
+depends 'application_python'
+# depends 'apt'
+# depends 'docker'
