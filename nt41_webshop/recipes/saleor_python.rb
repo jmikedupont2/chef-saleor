@@ -1,31 +1,31 @@
-
-#include_recipe 'poise-python'
 user_name = node.default['database']['user_name']
 user_password = node.default['database']['user_password']
 database_name = node.default['database']['database_name']
 database_host = node.default['database']['database_host']
 
-application '/opt/saleor' do
-  git '/opt/saleor' do
+ENV['SECRET_KEY']='DUMMY'
+base_dir = '/opt/saleor'
+application base_dir do
+  git base_dir do
     revision 'master'
-    repository 'https://github.com/mirumee/saleor'
+    repository 'https://github.com/jmikedupont2/saleor'
   end
-  #  python 'pypy3-5.7'
   python do
     version '3'
     options :system
   end
-  #virtualenv
+  virtualenv
   pip_requirements
   django do
-    database "postgres://#{user_name}@#{database_host}/#{database_name}"
+    secret_key "F00B4R"
+    debug true
+    settings_module 'saleor.settings'
+    local_settings_path "#{base_dir}/saleor/settings_local.py"
+    database "postgres://#{user_name}:#{user_password}@#{database_host}/#{database_name}"
     migrate true
   end
-  #gunicorn do
-  #  port 9000
-  #end
-
-  #poise_service_options '/opt/saleor' do
-  #  restart_delay 30
-  #end
+  gunicorn do
+    port 9000
+  end  
+  
 end

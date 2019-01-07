@@ -37,46 +37,36 @@ postgresql_database database_name do
   locale 'en_US.UTF-8'
 end
 
-
-# include_recipe 'postgresql'
-# # connection info
-
-# postgresql_connection_info = {
-#   :host     => '127.0.0.1',
-#   :port     => node['postgresql']['config']['port'],
-#   :username => 'postgres',
-#   :password => node['postgresql']['password']['postgres']
-# }
-
-# postgresql_database_user user_name do
-#   connection postgresql_connection_info
-#   password user_password
-#   superuser true
-#   login true
-#   action :create
+# postgresql_access 'postgresql host superuser' do
+#   access_type       'host'
+#   access_db         'all'
+#   access_user       'postgres'
+#   access_addr       '127.0.0.1/32'
+#   access_method     'md5'
+#   notifies :reload, 'service[postgresql]'
 # end
 
+postgresql_user user_name do
+  superuser true
+  password user_password
+  sensitive false
+end
 
-# # create a postgresql database
-# postgresql_database user_name do
-#   connection postgresql_connection_info
-#   encoding "UTF-8"
-#   action :create
-# end
+postgresql_access 'a local superuser' do
+  access_type 'host'
+  access_db 'all'
+  access_user user_name
+  access_method 'md5'
+  access_addr '127.0.0.1/32'
+  notifies :reload, 'service[postgresql]'
+end
 
-# postgresql_database_user user_name do
-#   connection postgresql_connection_info
-#   database_name database_name
-#   privileges [:all]
-#   action :grant
-# end
+postgresql_access 'a local superuser' do
+  access_type 'host'
+  access_db 'all'
+  access_user user_name
+  access_method 'md5'
+  access_addr '::1/128'
+  notifies :reload, 'service[postgresql]'
+end
 
-# change_notify = node['postgresql']['server']['config_change_notify']
-
-# template "#{node['postgresql']['dir']}/pg_hba.conf" do
-#   source "pg_hba.conf.erb"
-#   owner "postgres"
-#   group "postgres"
-#   mode 0600
-#   notifies change_notify, 'service[postgresql]', :immediately
-# end

@@ -5,8 +5,23 @@ metadata
 
 #cookbook 'postgresql', :path => './berks-cookbooks/postgresql'
 #cookbook 'postgresql', '~> 7.1.1'
-cookbook 'postgresql', github: 'sous-chefs/postgresql', tag: 'master'
+#cookbook 'postgresql', github: 'sous-chefs/postgresql', tag: 'master'
+cookbook 'postgresql', github: 'jmikedupont2/postgresql', tag: 'patch-1'
 
 #cookbook 'application_python', github: 'poise/application_python', tag: 'master'
-
+# berks-cookbooks/poise-python/files/halite_gem/poise_python/resources/python_package.rb
 extension 'halite'
+
+#cookbook 'poise-python', :path => './berks-cookbooks/poise-python'
+#cookbook 'poise-python', :path => './berks-cookbooks/poise-python'
+#cookbook 'poise-python', github: 'poise/poise-python', tag: 'master'
+cookbook 'poise-python', gem: 'poise-python'
+
+cookbook 'poise', gem: 'poise'
+cookbook 'application', gem: 'poise-application'
+cookbook 'application_git', gem: 'poise-application-git'
+cookbook 'poise-archive', gem: 'poise-archive'
+cookbook 'poise-boiler', gem: 'poise-boiler'
+cookbook 'poise-languages', gem: 'poise-languages'
+cookbook 'poise-profiler', gem: 'poise-profiler'
+cookbook 'poise-service', gem: 'poise-service'

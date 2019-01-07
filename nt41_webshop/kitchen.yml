@@ -7,10 +7,18 @@ provisioner:
 
 platforms:
   - name: debian-9
+    attributes:
+      poise-service:
+        gunicorn:
+          provider: sysvinit
+        saleor:
+          provider: sysvinit
+#provider: systemd
 #  - name: centos-7
 
 suites:
   - name: default
     run_list:
-      - recipe[nt41_webshop::default]
+        - recipe[nt41_webshop::default]
+        #  - recipe[nt41_webshop::test_env]
     attributes:
