@@ -25,3 +25,7 @@ cookbook 'poise-boiler', gem: 'poise-boiler'
 cookbook 'poise-languages', gem: 'poise-languages'
 cookbook 'poise-profiler', gem: 'poise-profiler'
 cookbook 'poise-service', gem: 'poise-service'
+
+
+# npm
+cookbook 'nodejs', '= 6.0.0'
