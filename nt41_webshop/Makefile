@@ -1,6 +1,7 @@
 test2:
 	./bin/kitchen test
 
+
 debug:
 	./bin/kitchen test  -l d --debug 
 
@@ -21,3 +22,6 @@ diag:
 
 restart: purgedb berks test2
 	echo lets go chef
+
+test3:
+	KITCHEN_LOCAL_YAML=kitchen_test.yml ./bin/kitchen test

@@ -22,3 +22,7 @@ suites:
         - recipe[nt41_webshop::default]
         #  - recipe[nt41_webshop::test_env]
     attributes:
+
+transport:
+  ssh_key:
+      - ~/.ssh/google_compute_engine

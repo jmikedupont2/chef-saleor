@@ -38,9 +38,9 @@ application base_dir do
     database "postgres://#{user_name}:#{user_password}@#{database_host}/#{database_name}"
     migrate true
   end
-  gunicorn do
-    port 9000
-  end  
+ # gunicorn do
+ #   port 9000
+ # end  
   
 end
 
