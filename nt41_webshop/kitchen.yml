@@ -1,12 +1,25 @@
 ---
+#driver:
+#  name: localhost
 driver:
-  name: localhost
-
+  name: gce
+  project: nt41-checkout
+  zone: us-east1-c
+  email: jmikedupont@gmail.com
+  tags:
+    - devteam
+    - test-kitchen
+  service_account_scopes:
+    - devstorage.read_write
+    - userinfo.email
 provisioner:
   name: chef_solo
 
 platforms:
   - name: debian-9
+    driver:
+         image_project: debian-cloud
+         image_name: debian-9-stretch-v20181210
     attributes:
       poise-service:
         gunicorn:
@@ -24,5 +37,6 @@ suites:
     attributes:
 
 transport:
+  username: jmikedupont2
   ssh_key:
       - ~/.ssh/google_compute_engine

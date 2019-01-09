@@ -26,3 +26,4 @@ gem 'test-kitchen', git: 'https://github.com/test-kitchen/test-kitchen.git'
 
 gem 'inspec', git: 'https://github.com/inspec/inspec'
 gem 'poise-build-essential'
+gem 'kitchen-google', '~> 1.0'

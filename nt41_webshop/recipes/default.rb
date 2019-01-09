@@ -5,8 +5,8 @@
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
 
-
-#include_recipe 'poise-build-essential'
+include_recipe "nt41_webshop::gce"
+include_recipe "nt41_webshop::debian"
 
 include_recipe "nt41_webshop::postgres_server"
 
